@@ -4,6 +4,9 @@ import { TextField, Button, Box } from '@mui/material';
 
 function BookingPage() {
 
+  const [isContinueButtonDisabled, setIsContinueButtonDisabled] = useState(true);
+
+
   const [booking, setBooking] = useState({
     date: '',
     time: '',
@@ -62,11 +65,23 @@ function BookingPage() {
     const hasAllValues =
       !!booking.date && !!booking.time && !!booking.numPeople && !!booking.table;
 
-    if (hasErrors || !hasAllValues) {
+    if (hasErrors) {
       setFormErrors(errors);
     } else {
+      setFormErrors({
+        date: '',
+        time: '',
+        numPeople: '',
+        table: '',
+      });
       setStep(2);
     }
+
+    const allFieldsFilled = Object.values(booking).every(field => !!field);
+    const hasErrorsOrEmptyField = hasErrors || !allFieldsFilled;
+    const disableButton = hasErrorsOrEmptyField;
+
+    setIsContinueButtonDisabled(disableButton);
   };
 
   return (
@@ -91,6 +106,7 @@ function BookingPage() {
               variant="outlined"
               error={!!formErrors.date}
               helperText={formErrors.date}
+              label="Date"
             />
           </label>
           <label>
@@ -103,6 +119,8 @@ function BookingPage() {
               variant="outlined"
               error={!!formErrors.time}
               helperText={formErrors.time}
+              label="Time"
+
             />
           </label>
           <label>
@@ -115,15 +133,17 @@ function BookingPage() {
               variant="outlined"
               error={!!formErrors.numPeople}
               helperText={formErrors.numPeople}
+              label="Number of People"
+
             />
           </label>
           <Button
-            type="submit"
-            variant="contained"
-            disabled={!!Object.values(formErrors).find((error) => error)}
-          >
-            Continue
-          </Button>
+  type="submit"
+  variant="contained"
+  disabled={isContinueButtonDisabled}
+>
+  Continue
+</Button>
         </form>
       )}
     </main>
