@@ -6,19 +6,29 @@ function Footer() {
   return (
     <footer className="footer-container">
       <div className="footer-content">
-        <img src={logo} alt="Little Lemon Logo" className="logo" />
+        <figure>
+          <img src={logo} alt="Little Lemon Logo" className="logo" />
+        </figure>
         <h2>Reserve Your Table with Little Lemon</h2>
-        <div className="social-links">
-          <a href="#">
-            <i className="fab fa-facebook-f"></i>
-          </a>
-          <a href="#">
-            <i className="fab fa-twitter"></i>
-          </a>
-          <a href="#">
-            <i className="fab fa-instagram"></i>
-          </a>
-        </div>
+        <nav className="social-links">
+          <ul>
+            <li>
+              <a href="#">
+                <i className="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i className="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i className="fab fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </footer>
   );

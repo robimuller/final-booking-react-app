@@ -8,10 +8,16 @@ import Footer from './Footer';
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <HeroSection />
-      <TableList />
-      <Footer />
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <HeroSection />
+        <TableList />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }

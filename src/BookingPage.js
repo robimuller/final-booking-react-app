@@ -77,50 +77,56 @@ function BookingPage() {
       height="100vh"
       sx={{ backgroundColor: '#FFEBCD' }} p={2}
     >
-    <div>
+    <main>
       <h1>Make a booking with us now!</h1>
       {step === 1 && (
         <form onSubmit={handleContinue}>
-          <TextField
-            label="Date"
-            type="date"
-            name="date"
-            value={booking.date}
-            onChange={handleInputChange}
-            variant="outlined"
-            error={!!formErrors.date}
-            helperText={formErrors.date}
-          />
-          <TextField
-            label="Time"
-            type="time"
-            name="time"
-            value={booking.time}
-            onChange={handleInputChange}
-            variant="outlined"
-            error={!!formErrors.time}
-            helperText={formErrors.time}
-          />
-          <TextField
-            label="Number of people"
-            type="number"
-            name="numPeople"
-            value={booking.numPeople}
-            onChange={handleInputChange}
-            variant="outlined"
-            error={!!formErrors.numPeople}
-            helperText={formErrors.numPeople}
-          />
+          <label>
+            Date
+            <TextField
+              type="date"
+              name="date"
+              value={booking.date}
+              onChange={handleInputChange}
+              variant="outlined"
+              error={!!formErrors.date}
+              helperText={formErrors.date}
+            />
+          </label>
+          <label>
+            Time
+            <TextField
+              type="time"
+              name="time"
+              value={booking.time}
+              onChange={handleInputChange}
+              variant="outlined"
+              error={!!formErrors.time}
+              helperText={formErrors.time}
+            />
+          </label>
+          <label>
+            Number of people
+            <TextField
+              type="number"
+              name="numPeople"
+              value={booking.numPeople}
+              onChange={handleInputChange}
+              variant="outlined"
+              error={!!formErrors.numPeople}
+              helperText={formErrors.numPeople}
+            />
+          </label>
           <Button
             type="submit"
             variant="contained"
-            disabled={Object.values(formErrors).some((error) => error !== '')}
-            >
+            disabled={!!Object.values(formErrors).find((error) => error)}
+          >
             Continue
           </Button>
         </form>
       )}
-    </div>
+    </main>
     </Box>
   );
 }
